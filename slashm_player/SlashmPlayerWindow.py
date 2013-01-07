@@ -60,13 +60,8 @@ class SlashmPlayerWindow(Window):
         folder_selector.show()
         response=folder_selector.run()
         if response == Gtk.ResponseType.OK:
-
-            config_file = open('slashplayer.conf', 'a')
-            config_html = open('config.html','a+')
-            config_file.write(folder_selector.get_filename()+'\n')
-
-            
-            config_html.write('<a href = "'+ folder_selector.get_filename()+'">'+os.path.basename(folder_selector.get_filename())+'</a> <br>')
+            config_file = open('slashplayer.conf', 'a')            
+            config_file.write(folder_selector.get_filename()+'\n')           
             config_file.close()
         folder_selector.destroy()
 
@@ -74,12 +69,10 @@ class SlashmPlayerWindow(Window):
     def on_folderbutton_clicked(self,widget):
         f = open('slashplayer.conf', 'r')        
         doc = PyH('')
+        doc.
         for line in f:
             doc << a(os.path.basename(line),href=line)
-            doc << br()
-        #doc.a.href=("http://www.google.com")
-        doc.render()
-        #doc.               
+            doc << br()                       
         self.webview.load_html_string(str(doc.render()),'#')
 
 
