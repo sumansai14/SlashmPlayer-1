@@ -29,6 +29,8 @@ class SlashmPlayerWindow(Window):
         self.browsewindow = self.builder.get_object("browsewindow")        
         self.webview=WebKit.WebView()        
         self.browsewindow.add(self.webview)
+        settings = self.webview.get_settings()
+        settings.set_property('enable-default-context-menu', False)
         self.webview.show()
         
         self.folderselect = self.builder.get_object("folderselect")
@@ -58,8 +60,11 @@ class SlashmPlayerWindow(Window):
 
     def on_folderbutton_clicked(self,widget):
         f = open('slashplayer.conf', 'r')        
-        doc = HTML('html',)
-        print doc                 
+        doc = HTML()
+        doc.html
+        doc.html.head
+        doc.html.title('title')
+        #doc.               
         self.webview.open(str(doc))
 
 
