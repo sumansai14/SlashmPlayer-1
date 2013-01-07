@@ -50,7 +50,9 @@ class SlashmPlayerWindow(Window):
 
 
     def on_folderbutton_clicked(self,widget):
-        f = open('slashplayer.conf', 'r')           
-        self.webview.open('file:///home/sai/slashm-player/config.html')
+        f = open('slashplayer.conf', 'r')
+        cwd = os.getcwd()
+        opened = cwd + "/config.html"       
+        self.webview.open(opened)
         
         

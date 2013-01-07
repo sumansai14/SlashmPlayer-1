@@ -44,13 +44,15 @@ class SlashmPlayerWindow(Window):
             k = open('config.html','a+')
             f.write(test.get_filename()+'\n')
             
-            k.write('<a href = "'+test.get_filename()+'">'+os.path.basename(line)+'</a> <br>')
+            k.write('<a href = "'+test.get_filename()+'">'+os.path.basename(test.get_filename())+'</a> <br>')
             f.close()
         test.destroy()
 
 
     def on_folderbutton_clicked(self,widget):
-        f = open('slashplayer.conf', 'r')           
-        self.webview.open('file:///home/sai/slashm-player/config.html')
+        f = open('slashplayer.conf', 'r')
+        cwd = os.getcwd()
+        opened = cwd + "/../config.html"       
+        self.webview.open(opened)
         
         
