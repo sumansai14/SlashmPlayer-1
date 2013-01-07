@@ -7,6 +7,7 @@ from locale import gettext as _
 
 from gi.repository import Gtk, WebKit # pylint: disable=E0611
 import logging,os
+from pyh import *
 logger = logging.getLogger('slashm_player')
 
 from slashm_player_lib import Window
@@ -42,7 +43,8 @@ class SlashmPlayerWindow(Window):
             f = open('slashplayer.conf', 'a')
             k = open('config.html','a+')
             f.write(test.get_filename()+'\n')
-            k.write('<a href = "'+line+'">'+os.path.basename(line)+'</a> <br>')
+            
+            k.write('<a href = "'+test.get_filename()+'">'+os.path.basename(test.get_filename())+'</a> <br>')
             f.close()
         test.destroy()
 
