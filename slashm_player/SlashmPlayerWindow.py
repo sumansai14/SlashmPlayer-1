@@ -30,27 +30,38 @@ class SlashmPlayerWindow(Window):
         self.webview=WebKit.WebView()        
         self.browsewindow.add(self.webview)
         self.webview.show()
-        #self.webview.open("file:///home/sai/Desktop/test.html")
+        
         self.folderselect = self.builder.get_object("folderselect")
         self.folderbutton = self.builder.get_object("folderbutton")
+        self.librarybutton = self.builder.get_object("librarybutton")
         # Code for other initialization actions should be added here.
+        
+        
+        
 
 
     def on_folderselect_clicked(self,widget):
-        test = Gtk.FileChooserDialog("select a folder",self,Gtk.FileChooserAction.SELECT_FOLDER,(Gtk.STOCK_CANCEL,Gtk.ResponseType.CANCEL,"Select", Gtk.ResponseType.OK))        
-        test.show()
-        response=test.run()
+        folder_selector = Gtk.FileChooserDialog("select a folder",self,Gtk.FileChooserAction.SELECT_FOLDER,(Gtk.STOCK_CANCEL,Gtk.ResponseType.CANCEL,"Select", Gtk.ResponseType.OK))        
+        folder_selector.show()
+        response=folder_selector.run()
         if response == Gtk.ResponseType.OK:
+<<<<<<< HEAD
             f = open('slashplayer.conf', 'a')
             #k = open('config.html','a+')
             f.write(test.get_filename()+'\n')
+=======
+            config_file = open('slashplayer.conf', 'a')
+            config_html = open('config.html','a+')
+            config_file.write(folder_selector.get_filename()+'\n')
+>>>>>>> 14d2ef6957391153c9ce9392a1254aa95c868a97
             
-            k.write('<a href = "'+test.get_filename()+'">'+os.path.basename(test.get_filename())+'</a> <br>')
-            f.close()
-        test.destroy()
+            config_html.write('<a href = "'+ folder_selector.get_filename()+'">'+os.path.basename(folder_selector.get_filename())+'</a> <br>')
+            config_file.close()
+        folder_selector.destroy()
 
 
     def on_folderbutton_clicked(self,widget):
+<<<<<<< HEAD
         f = open('slashplayer.conf', 'r')        
         doc = HTML('html',)
         print doc                 
@@ -58,5 +69,29 @@ class SlashmPlayerWindow(Window):
 
 
     
+=======
+        config_file = open('slashplayer.conf', 'r')
+        cwd = os.getcwd()
+        opened = cwd + "/config.html"       
+        self.webview.open(opened)
+        
+        
+    def on_librarybutton_clicked(self,widget):
+        #list_of_files_in_cwd = os.listdir(".")
+        #open config file and make an array of all the items in it named locations
+        config_file = open('slashplayer.conf', 'r')
+        locations = config_file.readlines()
+        for index, location in enumerate(locations):
+            location = location[:-1]
+            os.listdir(location) 
+            
+        
+        
+        
+        
+        
+        
+        
+>>>>>>> 14d2ef6957391153c9ce9392a1254aa95c868a97
         
         
