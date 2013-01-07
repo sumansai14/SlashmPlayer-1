@@ -1,2 +1,7 @@
 # to ignore temporary gedit files
 *~
+/slashm_player/*~
+/slashm_player/*pyc
+/slashm_player_lib/*~
+/slashm_player_lib/*pyc
+/data/ui/*~
