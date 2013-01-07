@@ -45,15 +45,11 @@ class SlashmPlayerWindow(Window):
         folder_selector.show()
         response=folder_selector.run()
         if response == Gtk.ResponseType.OK:
-<<<<<<< HEAD
-            f = open('slashplayer.conf', 'a')
-            #k = open('config.html','a+')
-            f.write(test.get_filename()+'\n')
-=======
+
             config_file = open('slashplayer.conf', 'a')
             config_html = open('config.html','a+')
             config_file.write(folder_selector.get_filename()+'\n')
->>>>>>> 14d2ef6957391153c9ce9392a1254aa95c868a97
+
             
             config_html.write('<a href = "'+ folder_selector.get_filename()+'">'+os.path.basename(folder_selector.get_filename())+'</a> <br>')
             config_file.close()
@@ -61,7 +57,6 @@ class SlashmPlayerWindow(Window):
 
 
     def on_folderbutton_clicked(self,widget):
-<<<<<<< HEAD
         f = open('slashplayer.conf', 'r')        
         doc = HTML('html',)
         print doc                 
@@ -69,11 +64,7 @@ class SlashmPlayerWindow(Window):
 
 
     
-=======
-        config_file = open('slashplayer.conf', 'r')
-        cwd = os.getcwd()
-        opened = cwd + "/config.html"       
-        self.webview.open(opened)
+
         
         
     def on_librarybutton_clicked(self,widget):
@@ -90,8 +81,6 @@ class SlashmPlayerWindow(Window):
         
         
         
-        
-        
->>>>>>> 14d2ef6957391153c9ce9392a1254aa95c868a97
+
         
         
