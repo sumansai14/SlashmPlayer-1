@@ -1,0 +1,8 @@
+[Desktop Entry]
+_Name=Slashm Player
+_Comment=SlashmPlayer application
+Categories=GNOME;Utility;
+Exec=slashm-player
+Icon=slashm-player
+Terminal=false
+Type=Application

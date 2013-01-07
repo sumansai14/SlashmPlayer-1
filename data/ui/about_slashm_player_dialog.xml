@@ -1,0 +1,9 @@
+<glade-catalog name="about_slashm_player_dialog" domain="glade-3" 
+               depends="gtk+" version="1.0">
+  <glade-widget-classes>
+    <glade-widget-class title="About Slashm Player Dialog" name="AboutSlashmPlayerDialog" 
+                        generic-name="AboutSlashmPlayerDialog" parent="GtkAboutDialog"
+                        icon-name="widget-gtk-about-dialog"/>
+  </glade-widget-classes>
+
+</glade-catalog>
