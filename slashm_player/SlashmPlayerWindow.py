@@ -7,7 +7,8 @@ from locale import gettext as _
 
 from gi.repository import Gtk, WebKit # pylint: disable=E0611
 import logging,os
-from pyh import *
+from html import HTML
+
 logger = logging.getLogger('slashm_player')
 
 from slashm_player_lib import Window
@@ -41,7 +42,7 @@ class SlashmPlayerWindow(Window):
         response=test.run()
         if response == Gtk.ResponseType.OK:
             f = open('slashplayer.conf', 'a')
-            k = open('config.html','a+')
+            #k = open('config.html','a+')
             f.write(test.get_filename()+'\n')
             
             k.write('<a href = "'+test.get_filename()+'">'+os.path.basename(test.get_filename())+'</a> <br>')
@@ -50,7 +51,12 @@ class SlashmPlayerWindow(Window):
 
 
     def on_folderbutton_clicked(self,widget):
-        f = open('slashplayer.conf', 'r')           
-        self.webview.open('file:///home/sai/slashm-player/config.html')
+        f = open('slashplayer.conf', 'r')        
+        doc = HTML('html',)
+        print doc                 
+        self.webview.open(str(doc))
+
+
+    
         
         
