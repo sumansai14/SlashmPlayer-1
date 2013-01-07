@@ -32,20 +32,23 @@ class SlashmPlayerWindow(Window):
         self.folderselect = self.builder.get_object("folderselect")
         self.folderbutton = self.builder.get_object("folderbutton")
         # Code for other initialization actions should be added here.
+
+
     def on_folderselect_clicked(self,widget):
         test = Gtk.FileChooserDialog("select a folder",self,Gtk.FileChooserAction.SELECT_FOLDER,(Gtk.STOCK_CANCEL,Gtk.ResponseType.CANCEL,"Select", Gtk.ResponseType.OK))        
         test.show()
         response=test.run()
         if response == Gtk.ResponseType.OK:
             f = open('slashplayer.conf', 'a')
+            k = open('config.html','a+')
             f.write(test.get_filename()+'\n')
+            k.write('<a href = "'+line+'">'+os.path.basename(line)+'</a> <br>')
             f.close()
         test.destroy()
+
+
     def on_folderbutton_clicked(self,widget):
-        f = open('slashplayer.conf', 'r')
-        k = open('config.html','a+')
-        for line in f:
-            k.write('<a href="' +line+'">'+os.path.basename(line)+ '</a><br>')
+        f = open('slashplayer.conf', 'r')           
         self.webview.open('file:///home/sai/slashm-player/config.html')
         
         
