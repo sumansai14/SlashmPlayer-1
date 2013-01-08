@@ -49,14 +49,11 @@ class SlashmPlayerWindow(Window):
         """Deal with the button press event."""
         if event.button == 3:
             self.menu.popup(None, None, None, None, event.button, event.time)
-            self.menu.show_all()
-
-        
-        
+            self.menu.show_all()        
 
 
     def on_folderselect_clicked(self,widget):
-        folder_selector = Gtk.FileChooserDialog("select a folder",self,Gtk.FileChooserAction.SELECT_FOLDER,(Gtk.STOCK_CANCEL,Gtk.ResponseType.CANCEL,"Select", Gtk.ResponseType.OK))        
+        folder_selector = Gtk.FileChooserDialog("select a folder",self,Gtk.FileChooserAction.SELECT_FOLDER,Gtk.STOCK_CANCEL,Gtk.ResponseType.CANCEL,"Select", Gtk.ResponseType.OK))        
         folder_selector.show()
         response=folder_selector.run()
         if response == Gtk.ResponseType.OK:
@@ -72,15 +69,11 @@ class SlashmPlayerWindow(Window):
         doc << div(id='wrapper')               
         for line in f:            
             if (os.path.isdir(line.replace('\n',''))):
-                folderdiv = doc.wrapper << div(id='folder')
-                #print 'sai'            
+                folderdiv = doc.wrapper << div(id='folder')                            
                 doc.wrapper.folder << a(os.path.basename(line),href=line)
                 doc.wrapper.folder << br()
         print doc.render()                       
-        self.webview.load_html_string(str(doc.render()),'file://')
-
-
-    
+        self.webview.load_html_string(str(doc.render()),'file://')    
 
         
         

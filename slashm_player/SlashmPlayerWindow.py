@@ -49,10 +49,7 @@ class SlashmPlayerWindow(Window):
         """Deal with the button press event."""
         if event.button == 3:
             self.menu.popup(None, None, None, None, event.button, event.time)
-            self.menu.show_all()
-
-        
-        
+            self.menu.show_all()        
 
 
     def on_folderselect_clicked(self,widget):
@@ -76,10 +73,7 @@ class SlashmPlayerWindow(Window):
                 doc.wrapper.folder << a(os.path.basename(line),href=line)
                 doc.wrapper.folder << br()
         print doc.render()                       
-        self.webview.load_html_string(str(doc.render()),'file://')
-
-
-    
+        self.webview.load_html_string(str(doc.render()),'file://')    
 
         
         
