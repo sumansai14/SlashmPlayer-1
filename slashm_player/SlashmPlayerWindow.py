@@ -68,12 +68,14 @@ class SlashmPlayerWindow(Window):
 
     def on_folderbutton_clicked(self,widget):
         f = open('slashplayer.conf', 'r')        
-        doc = PyH('')
-       
-        for line in f:
-            
-            doc << a(os.path.basename(line),href=line)
-            doc << br()                       
+        doc = PyH('')        
+        doc << div(id='wrapper')               
+        for line in f:            
+            if (os.path.isdir(line.replace('\n',''))):
+                folderdiv = doc.wrapper << div(id='folder')                            
+                doc.wrapper.folder << a(os.path.basename(line),href=line)
+                doc.wrapper.folder << br()
+        print doc.render()                       
         self.webview.load_html_string(str(doc.render()),'file://')
 
 
