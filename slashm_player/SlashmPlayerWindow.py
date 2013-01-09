@@ -38,6 +38,7 @@ class SlashmPlayerWindow(Window):
         self.librarybutton = self.builder.get_object("librarybutton")
         # Code for other initialization actions should be added here.
         self.connect('button_press_event', self._on_button_press_event)
+         
     
     def _create_context_menu(self):
         """Create the context menu."""
@@ -69,22 +70,24 @@ class SlashmPlayerWindow(Window):
         doc << div(id='wrapper')               
         for line in f:            
             if (os.path.isdir(line.replace('\n',''))):
-                folderdiv = doc.wrapper << div(id='folder')                            
-                doc.wrapper.folder << a(os.path.basename(line),href=line)
-                doc.wrapper.folder << br()
+                folder = doc.wrapper << div(cl='folder')                            
+                folder << a(os.path.basename(line),href=line)
+                folder << br()
         print doc.render()                       
-        self.webview.load_html_string(str(doc.render()),'file://')    
+        self.webview.load_html_string(str(doc.render()),'file://')
+        self.webnav = WebKit.WebNavigationAction         
+        print WebKit.WebNavigationAction.get_original_uri(self.webnav)
+            
 
         
         
-    def on_librarybutton_clicked(self,widget):
-        #list_of_files_in_cwd = os.listdir(".")
-        #open config file and make an array of all the items in it named locations
-        config_file = open('slashplayer.conf', 'r')
-        locations = config_file.readlines()
-        for index, location in enumerate(locations):
-            location = location[:-1]
-            os.listdir(location) 
+    def on_librarybutton_clicked(self,widget):        
+        config_file = open('slashplayer.conf', 'r')        
+        for line in config_file:
+            for root,dirs,files in os.walk(line.replace('\n','')):
+                print root
+                
+            
             
         
         
